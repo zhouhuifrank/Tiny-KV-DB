@@ -1,6 +1,6 @@
 /*
  * this.FrankZhou
- * 跳跃表 底层存储引擎 key-value结构
+ * 跳跃表模板类 底层存储引擎 key-value结构
  */
 #ifndef TINY_KV_DB_SKIP_LIST_H
 #define TINY_KV_DB_SKIP_LIST_H
@@ -92,13 +92,21 @@ public:
     SkipList() {};
     SkipList(int maxLevel);
     ~SkipList();
+    // 插入节点的时候获取一个随机的层高
     int getRandomLevel() const;
+    // 返回跳表的大小
     int size() const;
+    // 创建一个层高为level的节点
     Node<K,V>* createNode(K key,V value,int level);
+    // 向跳表中插入一个节点
     void insertNode(K key,V value);
+    // 按key查询
     void searchNode(K key) const;
+    // 删除key对应的值
     void deleteNode(K key);
+    // 数据落盘
     void dumpFile();
+    // 文件加载
     void loadFile();
 };
 
