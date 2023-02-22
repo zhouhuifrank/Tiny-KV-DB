@@ -14,7 +14,7 @@ template <typename E>
 class listNode {
 private:
     E value;
-private:
+public:
     listNode* prev;
     listNode* next;
 public:
@@ -113,6 +113,7 @@ public:
     void listAddNodeTail(const T &value);
     void listInsertNode(const T &value,int index);
     void listDelNode(const T &value);
+    void listJoin(doubleList<T>* source,doubleList<T>* target);
     listNode<T>* listSearchKey(const T &value) const;
     listNode<T>* listSearchIndex(int index) const;
     ~linkedList();
@@ -120,78 +121,148 @@ public:
 
 template <typename T>
 listNode<T>* linkedList<T>::move(int index) {
+    listNode<T>* curr = head->next;
+    while (index--) {
+        curr = curr->next;
+    }
 
+    return curr;
 }
 
 template <typename T>
 linkedList<T>::linkedList() {
-
+    head->next = tail;
+    head->preve = nullptr;
+    tail->prev = head;
+    tail->next = nullptr;
 }
 
 template <typename T>
 linkedList<T>::~linkedList() {
-
+    listRelease();
+    delete head;
+    delete tail;
 }
 
 
 template <typename T>
 int linkedList<T>::listLength() const {
-
+    return currentLength;
 }
 
 template <typename T>
 bool linkedList<T>::listEmpty() const {
-
+    return currentLength == 0;
 }
 
 template <typename T>
 void linkedList<T>::listRelease() {
+    listNode<T>* tmp;
+    listNode<T>* curr = head->next;
+    head->next = nullptr;
 
+    while (curr != nullptr) {
+        tmp = curr->next;
+        delete curr;
+        curr = tmp;
+    }
+    tail->prev = nullptr;
+    currentLength = 0;
 }
 
 template <typename T>
 listNode<T>* linkedList<T>::listPrevNode(listNode<T> *node) const {
-
+    return node->prev;
 }
 
 template <typename T>
 listNode<T>* linkedList<T>::listNextNode(listNode<T> *node) const {
-
+    return node->next;
 }
 
 template <typename T>
 T linkedList<T>::listNodeValue(listNode<T> *node) const {
-
+    return node->getValue();
 }
 
 template <typename T>
 void linkedList<T>::listAddNodeHead(const T &value) {
-
+    head->next = new listNode<T>(value,head,head->next);
 }
 
 template <typename T>
 void linkedList<T>::listAddNodeTail(const T &value) {
-
+    tail->prev = new listNode<T>(value,tail->prev,tail);
 }
 
 template <typename T>
 void linkedList<T>::listInsertNode(const T &value, int index) {
+    // index = 0头插   index = currentLength+1 尾插
+    if (index < 0 && index > currentLength+1) {
+        std::cout << "insert index is invalid" << std::endl;
+    }
 
+    if (index == 0) {
+        listAddNodeHead(value);
+    }
+    if (index == currentLength+1) {
+        listAddNodeTail(value);
+    }
+
+    listNode<T>* prev = move(index-1);
+    listNode<T>* insertNode = new listNode<T>(value,prev,prev->next);
+    insertNode->next = prev->next;
+    prev->next = insertNode;
 }
 
 template <typename T>
 void linkedList<T>::listDelNode(const T &value) {
+    listNode<T>* curr = head->next;
 
+    while (curr != nullptr) {
+        if (curr->getValue() != value) {
+            curr = curr->next;
+        } else {
+            break;
+        }
+    }
+
+    if (curr == nullptr) {
+        std::cout << "node value:" << value << std::endl;
+    } else {
+        listNode<T>* prev = curr->prev;
+        listNode<T>* next = curr->next;
+        prev->next = next;
+        next->prev = prev;
+        curr->prev = nullptr;
+        curr->next = nullptr;
+        delete curr;
+    }
 }
 
 template <typename T>
-listNode<T> *linkedList<T>::listSearchKey(const T &value) const {
+void linkedList<T>::listJoin(doubleList<T> *source, doubleList<T> *target) {
+    if (source->listLength() == 0) return;
+}
 
+template <typename T>
+listNode<T>* linkedList<T>::listSearchKey(const T &value) const {
+    listNode<T>* curr = head->next;
+
+    while (curr != nullptr) {
+        if (curr->getValue() != value) {
+            curr = curr->next;
+        } else {
+            break;
+        }
+    }
+
+    return curr;
 }
 
 template <typename T>
 listNode<T> *linkedList<T>::listSearchIndex(int index) const {
-
+    return move(index);
 }
 
 #endif //TINY_KV_DB_LINKED_LIST_H
