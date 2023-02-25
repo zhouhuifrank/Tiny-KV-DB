@@ -58,7 +58,7 @@ E listNode<E>::getValue() const {
 template <typename E>
 class listIter {
 public:
-    listNode<E>::listNode* next;
+    listNode<E>* next;
     int direction;
 };
 

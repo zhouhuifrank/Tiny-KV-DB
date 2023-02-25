@@ -102,38 +102,38 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for EXECUTABLE target srorage
+# Object build statements for EXECUTABLE target storage
 
 
 #############################################
-# Order-only phony target for srorage
+# Order-only phony target for storage
 
-build cmake_object_order_depends_target_srorage: phony || storage/CMakeFiles/srorage.dir
+build cmake_object_order_depends_target_storage: phony || storage/CMakeFiles/storage.dir
 
-build storage/CMakeFiles/srorage.dir/main.cpp.obj: CXX_COMPILER__srorage_Debug D$:/TechLearn/C++/Tiny-KV-DB/storage/main.cpp || cmake_object_order_depends_target_srorage
-  DEP_FILE = storage\CMakeFiles\srorage.dir\main.cpp.obj.d
+build storage/CMakeFiles/storage.dir/main.cpp.obj: CXX_COMPILER__storage_Debug D$:/TechLearn/C++/Tiny-KV-DB/storage/main.cpp || cmake_object_order_depends_target_storage
+  DEP_FILE = storage\CMakeFiles\storage.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -ID:/TechLearn/C++/Tiny-KV-DB/storage/.
-  OBJECT_DIR = storage\CMakeFiles\srorage.dir
-  OBJECT_FILE_DIR = storage\CMakeFiles\srorage.dir
+  OBJECT_DIR = storage\CMakeFiles\storage.dir
+  OBJECT_FILE_DIR = storage\CMakeFiles\storage.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target srorage
+# Link build statements for EXECUTABLE target storage
 
 
 #############################################
-# Link the executable storage\srorage.exe
+# Link the executable storage\storage.exe
 
-build storage/srorage.exe: CXX_EXECUTABLE_LINKER__srorage_Debug storage/CMakeFiles/srorage.dir/main.cpp.obj
+build storage/storage.exe: CXX_EXECUTABLE_LINKER__storage_Debug storage/CMakeFiles/storage.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = storage\CMakeFiles\srorage.dir
+  OBJECT_DIR = storage\CMakeFiles\storage.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = storage\srorage.exe
-  TARGET_IMPLIB = storage\libsrorage.dll.a
-  TARGET_PDB = srorage.exe.dbg
+  TARGET_FILE = storage\storage.exe
+  TARGET_IMPLIB = storage\libstorage.dll.a
+  TARGET_PDB = storage.exe.dbg
 
 
 #############################################
@@ -284,6 +284,67 @@ build client/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build client/rebuild_cache: phony client/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# D:/TechLearn/C++/Tiny-KV-DB/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target db
+
+
+#############################################
+# Order-only phony target for db
+
+build cmake_object_order_depends_target_db: phony || db/CMakeFiles/db.dir
+
+build db/CMakeFiles/db.dir/main.cpp.obj: CXX_COMPILER__db_Debug D$:/TechLearn/C++/Tiny-KV-DB/db/main.cpp || cmake_object_order_depends_target_db
+  DEP_FILE = db\CMakeFiles\db.dir\main.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = db\CMakeFiles\db.dir
+  OBJECT_FILE_DIR = db\CMakeFiles\db.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target db
+
+
+#############################################
+# Link the executable db\db.exe
+
+build db/db.exe: CXX_EXECUTABLE_LINKER__db_Debug db/CMakeFiles/db.dir/main.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = db\CMakeFiles\db.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = db\db.exe
+  TARGET_IMPLIB = db\libdb.dll.a
+  TARGET_PDB = db.exe.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build db/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D D:\TechLearn\C++\Tiny-KV-DB\cmake-build-debug\db && "D:\develop\CLion 2022.3.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build db/edit_cache: phony db/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build db/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D D:\TechLearn\C++\Tiny-KV-DB\cmake-build-debug\db && "D:\develop\CLion 2022.3.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SD:\TechLearn\C++\Tiny-KV-DB -BD:\TechLearn\C++\Tiny-KV-DB\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build db/rebuild_cache: phony db/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
 
 build Tiny_KV_DB: phony Tiny_KV_DB.exe
@@ -292,9 +353,13 @@ build data_structure: phony data_structure/data_structure.exe
 
 build data_structure.exe: phony data_structure/data_structure.exe
 
-build srorage: phony storage/srorage.exe
+build db: phony db/db.exe
 
-build srorage.exe: phony storage/srorage.exe
+build db.exe: phony db/db.exe
+
+build storage: phony storage/storage.exe
+
+build storage.exe: phony storage/storage.exe
 
 # =============================================================================
 # Folder targets.
@@ -304,7 +369,7 @@ build srorage.exe: phony storage/srorage.exe
 #############################################
 # Folder: D:/TechLearn/C++/Tiny-KV-DB/cmake-build-debug
 
-build all: phony Tiny_KV_DB.exe storage/all data_structure/all server/all client/all
+build all: phony Tiny_KV_DB.exe storage/all data_structure/all server/all client/all db/all
 
 # =============================================================================
 
@@ -323,6 +388,13 @@ build data_structure/all: phony data_structure/data_structure.exe
 # =============================================================================
 
 #############################################
+# Folder: D:/TechLearn/C++/Tiny-KV-DB/cmake-build-debug/db
+
+build db/all: phony db/db.exe
+
+# =============================================================================
+
+#############################################
 # Folder: D:/TechLearn/C++/Tiny-KV-DB/cmake-build-debug/server
 
 build server/all: phony
@@ -332,7 +404,7 @@ build server/all: phony
 #############################################
 # Folder: D:/TechLearn/C++/Tiny-KV-DB/cmake-build-debug/storage
 
-build storage/all: phony storage/srorage.exe
+build storage/all: phony storage/storage.exe
 
 # =============================================================================
 # Built-in targets
@@ -341,14 +413,14 @@ build storage/all: phony storage/srorage.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/TechLearn/C++/Tiny-KV-DB/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/client/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/data_structure/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/server/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/storage/CMakeLists.txt D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/TechLearn/C++/Tiny-KV-DB/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/client/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/data_structure/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/db/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/server/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/storage/CMakeLists.txt D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/TechLearn/C++/Tiny-KV-DB/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/client/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/data_structure/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/server/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/storage/CMakeLists.txt D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake: phony
+build CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/TechLearn/C++/Tiny-KV-DB/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/client/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/data_structure/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/db/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/server/CMakeLists.txt D$:/TechLearn/C++/Tiny-KV-DB/storage/CMakeLists.txt D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/develop/CLion$ 2022.3.1/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake: phony
 
 
 #############################################

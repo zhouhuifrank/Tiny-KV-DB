@@ -33,41 +33,4 @@ public:
     int intSetByteLen() const;
 };
 
-intSet::intSet() {
-
-}
-
-intSet::~intSet() {
-
-}
-
-void intSet::intSetAdd(const int &value) {
-
-}
-
-void intSet::intSetRemove(const int &value) {
-
-}
-
-int intSet::intSetFind(const int &value) const {
-
-}
-
-int intSet::intSetRandom() const {
-
-}
-
-int intSet::intSetGet(const int &index) const {
-
-}
-
-int intSet::intSetLen() const {
-
-}
-
-int intSet::intSetByteLen() const {
-
-}
-
-
 #endif //TINY_KV_DB_INT_SET_H

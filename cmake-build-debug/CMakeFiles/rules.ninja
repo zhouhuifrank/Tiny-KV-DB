@@ -41,7 +41,7 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__srorage_Debug
+rule CXX_COMPILER__storage_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = "D:\develop\CLion 2022.3.1\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -51,7 +51,7 @@ rule CXX_COMPILER__srorage_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__srorage_Debug
+rule CXX_EXECUTABLE_LINKER__storage_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\develop\CLion 2022.3.1\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -71,6 +71,25 @@ rule CXX_COMPILER__data_structure_Debug
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__data_structure_Debug
+  command = cmd.exe /C "$PRE_LINK && "D:\develop\CLion 2022.3.1\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__db_Debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = "D:\develop\CLion 2022.3.1\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__db_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\develop\CLion 2022.3.1\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
