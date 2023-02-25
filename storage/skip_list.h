@@ -13,8 +13,9 @@
 #include <fstream>
 #include <time.h>
 
-#define STORE_FILE "/store/storeFile"
+#define STORE_FILE "/store/dumpFile"
 #define SKIP_LIST_P 0.5
+#define MAX_MEMORY 1024*1024*100;
 
 std::mutex lockMutex;
 std::string delimiter = ":";
@@ -85,11 +86,12 @@ private:
     // 跳表头节点
     Node<K,V>* head;
     // 文件读写
-    std::ofstream  fileWriter;
+    std::ofstream fileWriter;
     std::ifstream fileReader;
 private:
     void getKeyValueFromString(const std::string& str,std::string* key, std::string* value);
     bool isValidString(const std::string &str);
+    int calculateMemory();
 public:
     SkipList() {};
     SkipList(int maxLevel);
@@ -103,7 +105,7 @@ public:
     // 向跳表中插入一个节点
     void insertNode(K key,V value);
     // 按key查询
-    void searchNode(K key) const;
+    bool searchNode(K key) const;
     // 删除key对应的值
     void deleteNode(K key);
     // 打印跳表
@@ -197,13 +199,61 @@ void SkipList<K, V>::insertNode(K key, V value) {
 }
 
 template <typename K,typename V>
-void SkipList<K, V>::searchNode(K key) const {
+bool SkipList<K, V>::searchNode(K key) const {
+    std::cout << "searchNode-----------------" << std::endl;
+    Node<K,V>* current = head;
 
+    for (int i=currLevel;i>=0;i--) {
+        while (current->forward[i] && current->forward[i]->getKey() < key) {
+            current = current->forward[i];
+        }
+    }
+
+    current = current->forward[0];
+
+    if (current != nullptr && current->getKey() == key) {
+        std::cout << "Found key:" << key << ", value:" << current->getValue() << std::endl;
+        return true;
+    }
+
+    std::cout << "Not Found Key:" << key << std::endl;
+    return false;
 }
 
 template <typename K,typename V>
 void SkipList<K, V>::deleteNode(K key) {
+    lockMutex.lock();
+    Node<K,V>* current = this->head;
+    Node<K,V>* update[maxLevel+1];
+    memset(update,0,sizeof(Node<K,V>*)*(maxLevel+1));
 
+    for (int i=currLevel;i>=0;i--) {
+        while (current->forward[i] != nullptr && current->forward[i]->getKey() < key) {
+            current = current->forward[i];
+        }
+
+        update[i] = current;
+    }
+
+    current = current->forward[0];
+    if (current != nullptr && current->getKey() == key) {
+        for (int i=0;i<=currLevel;i++) {
+            if (update[i]->forward[i] != current) {
+                break;
+            }
+
+            update[i]->forward[i] = current->forward[i];
+        }
+
+        while (currLevel > 0 && head->forward[currLevel] == 0) {
+            currLevel--;
+        }
+
+        std::cout << "Success deleted key " << key << std::endl;
+        listLength--;
+    }
+    lockMutex.unlock();
+    return;
 }
 
 template <typename K,typename V>
@@ -211,8 +261,10 @@ void SkipList<K,V>::printAllSkipList() {
     std::cout << "******SkipList******" << std::endl;
     // 遍历跳表的每层
     for (int i=0;i<=currLevel;i++) {
+        // 拿到每一层的头节点
         Node<K,V>* node = this->head->forward[i];
         std::cout << "Level " << i << ": ";
+        // 遍历每一层
         while (node != nullptr) {
             std::cout << node->getKey() << ":" << node->getValue() << ";";
             node = node->forward[i];
@@ -257,6 +309,7 @@ void SkipList<K,V>::loadFile() {
         }
         // 插入跳表中
         std::cout << "key:" << key << " " << "value:" << value << std::endl;
+        insertNode(key,value);
     }
 
     fileReader.close();
@@ -306,10 +359,17 @@ bool SkipList<K,V>::isValidString(const std::string &str) {
     }
 
     // :分隔符必须在中间
-    if (str.find(deleteNode()) == std::string::npos) {
+    if (str.find(delimiter) == std::string::npos) {
         return false;
     }
     return true;
+}
+
+// 计算当前跳表中的节点存储的内存大小
+template <typename  K,typename V>
+int SkipList<K,V>::calculateMemory() {
+    int byteNumber = sizeof(Node<K,V>*)*listLength;
+    return byteNumber;
 }
 
 #endif //TINY_KV_DB_SKIP_LIST_H
